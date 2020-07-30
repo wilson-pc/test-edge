@@ -1,0 +1,32 @@
+@layout('layouts/master')
+
+@section('content')
+
+@if(user)
+  <h2> hay session/h2>
+@else
+  <h2> NO HAY SESCION</h2>
+@endif
+  <p> Content area </p>
+  <h1>{{count(users)}}</h1>
+<h1>{{users.length}}</h1>
+<h1>{{toJSON(users)}}</h1>
+<h1>{{first(users).bio}}</h1>
+<h1>{{ truncate(users[0].bio, 5, '...') }} hh</h1>
+
+  @each(user in users)
+  <div class="user">
+    @component('components.user',user=user)
+    @endcomponent
+  </div>
+@endeach
+
+@each(number in range(10))
+  {{ number }}
+@endeach
+<br>
+
+@each(number in range(2, 10))
+  {{ number }}
+@endeach
+@endsection
